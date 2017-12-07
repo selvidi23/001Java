@@ -9,10 +9,21 @@ public class OpenFile {
     public void readpath()
     {
         String path;
-        System.out.println("Podaj sciezke");
+        System.out.println("Podaj sciezke do pliku odzczytu");
         Scanner scannerpath = new Scanner(System.in);
         path = scannerpath.nextLine();
         this.path = path;
+
+    }
+
+//---------------------------------------------------------------------------
+    public void writepath()
+    {
+        String path;
+        System.out.println("Podaj sciezke plik do zapisu");
+        Scanner scannerpath = new Scanner(System.in);
+        path = scannerpath.nextLine();
+        this.path2 = path;
 
     }
 
@@ -48,19 +59,18 @@ public class OpenFile {
         }
 
     }
-
+//---------------------------------------------------------------------------
     public String SwapToAnagram(String line)
     {
-        char[] tmp;
+
         StringBuilder AnagramLinebuild = new StringBuilder("");
-        tmp = line.toCharArray();
         String AnagramLine = null;
-        char a = 'p';
+        char tmp = 'p';
         for(int i = line.length()-1; i>=0; i--)
         {
 
-            a = line.charAt(i);
-            AnagramLinebuild.append(a);
+            tmp = line.charAt(i);
+            AnagramLinebuild.append(tmp);
 
         }
 
@@ -72,5 +82,45 @@ public class OpenFile {
 
 //---------------------------------------------------------------------------
 
+    public String SwapCharOnString(String line , char oldchar, char newchar )
+    {
+        String endString = null;
+        StringBuilder tmpStringbuilder = new StringBuilder("");
+        char tmp = 'p';
+        for(int i =0 ;i<=line.length()-1;i++)
+        {
+            tmp = line.charAt(i);
+            if(tmp == oldchar)
+            {
+                tmpStringbuilder.append(newchar);
+            }
+            else
+            {
+                tmpStringbuilder.append(tmp);
+            }
+        }
+        endString = tmpStringbuilder.toString();
+        return endString;
+    }
+
+//---------------------------------------------------------------------------
+
+    public int NumberWordsInLine(String line)
+    {
+        char tmp = 'p';
+        int wynik=0;
+        for(int i =0 ;i<=line.length()-1;i++)
+        {
+            tmp = line.charAt(i);
+            StringBuilder tmpstring = new StringBuilder("");
+
+            if(tmp == ' ' || tmp == '\n' )
+            {
+                wynik++;
+            }
+
+        }
+        return wynik;
+    }
 
 }

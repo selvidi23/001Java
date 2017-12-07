@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class EditFile extends OpenFile
 {
@@ -42,7 +43,7 @@ public class EditFile extends OpenFile
 
             case 0:
             {
-                System.out.println("1");
+                System.out.println("0");
                 String line = null;
                 int i =0;
                 try
@@ -66,8 +67,7 @@ public class EditFile extends OpenFile
 
 
                     }
-                    filereader.close();
-                    inputstream.close();
+
                 }
                     catch (IOException e) {
                     e.printStackTrace();
@@ -78,11 +78,72 @@ public class EditFile extends OpenFile
             }
             case 1:
             {
+                System.out.println("1");
+                String line = null;
+                char oldchar='a';
+                char newchar='@';
+
+               /* System.out.println("podaj stary znak");                   dokończyc wczytwyanie char
+                Scanner scannerpath = new Scanner(System.in);
+                oldchar = scannerpath.;
+                */
+
+                try
+                {
+                    while((line = filereader.readLine())!=null)
+                    {
+
+                        String tmpline = null;
+                        tmpline=SwapCharOnString(line,oldchar,newchar);
+                        inputstream.write(tmpline);
+                        inputstream.write("\n");
+                    }
+
+                }
+                    catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+            case 2:
+            {
+                System.out.println("2");
+                int NumberVerse = 0;
+                String line = null;
+
+                try
+                {
+                    while((line = filereader.readLine())!=null)
+                    {
+                        if(!line.isEmpty())
+                        {
+                            NumberVerse++;
+                            System.out.println("liczba znakow w lini "+NumberVerse+" "+line.length());
+                            System.out.println("liczba słow w lini "+NumberVerse+" "+NumberWordsInLine(line));
+                        }
+                    }
+                    System.out.println("liczba wers "+NumberVerse);
+
+                }
+                    catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             }
 
 
         }
+        try
+        {
+            filereader.close();
+            inputstream.close();
+        }
+            catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
 
     }
