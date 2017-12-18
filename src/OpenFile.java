@@ -112,7 +112,6 @@ public class OpenFile {
         for(int i =0 ;i<=line.length()-1;i++)
         {
             tmp = line.charAt(i);
-            StringBuilder tmpstring = new StringBuilder("");
 
             if(tmp == ' ' || tmp == '\n' )
             {
@@ -121,6 +120,35 @@ public class OpenFile {
 
         }
         return wynik;
+    }
+
+//---------------------------------------------------------------------------
+
+    public int NumberLine() {
+        BufferedReader filereader = null;
+        String line;
+        int Nv=0;
+        try
+        {
+            filereader = new BufferedReader(new FileReader(path));
+        }
+            catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            while ((line = filereader.readLine()) != null)
+            {
+                if(line.isEmpty())
+                {
+                    Nv++;
+                }
+            }
+        }
+            catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Nv;
     }
 
 }

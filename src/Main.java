@@ -5,7 +5,7 @@ public class Main {
         EditFile testclass = new EditFile();
 
         //testclass.readpath();
-        testclass.edit();
+        testclass.edit(99);
 
 
 
