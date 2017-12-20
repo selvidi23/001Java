@@ -151,4 +151,49 @@ public class OpenFile {
         return Nv;
     }
 
+//---------------------------------------------------------------------------
+
+    public String[] WordFromLine(String line,char oldchar ,String newendstring)
+    {
+        String wordtab[] = new String[(NumberWordsInLine(line))+1] ;
+        StringBuilder tmpStringbuilder = new StringBuilder("");
+        char tmp = 'p';
+        int j=0;
+        for(int i =0 ;i<=line.length()-1;i++)
+        {
+            tmp = line.charAt(i);
+            System.out.println(tmp);
+            if(tmp == ' ' || tmp == '\n' )
+            {
+                if(line.charAt(i-1)==oldchar && i>0)
+                {
+
+                    tmpStringbuilder.append(newendstring);
+                    tmpStringbuilder.append(' ');
+                    wordtab[j]=tmpStringbuilder.toString();
+                    tmpStringbuilder.delete(0, tmpStringbuilder.length());
+
+
+                    j++;
+                }
+                else
+                {
+                    tmpStringbuilder.append(tmp);
+                    wordtab[j] = tmpStringbuilder.toString();
+                    tmpStringbuilder.delete(0, tmpStringbuilder.length());
+                    j++;
+                }
+
+            }
+            else
+            {
+                tmpStringbuilder.append(tmp);
+                String stest;
+                stest=tmpStringbuilder.toString();
+
+                System.out.println(stest);
+            }
+        }
+        return wordtab;
+    }
 }

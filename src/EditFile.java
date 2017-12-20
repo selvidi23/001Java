@@ -50,7 +50,7 @@ public class EditFile extends OpenFile
         {
 
             case 0: {
-                System.out.println("0");
+                System.out.println("0.0");
                 String line = null;
                 int i = 0;
                 try {
@@ -250,6 +250,53 @@ public class EditFile extends OpenFile
 
                 break;
 
+            }
+            case 4:
+            {
+                System.out.println("4.0");
+                String line = null;
+
+                try
+                {
+                    while ((line = filereader.readLine()) != null)
+                    {
+                        //line = " Last Christmas \n I gave you my heart  ";
+                        String stringtab[]=WordFromLine(line, 'a', "terk");
+
+                        for(int i=0;i<NumberWordsInLine(line);i++)
+                        {
+                            inputstream.write(stringtab[i]);
+
+
+                        }
+                        inputstream.write('\n');
+
+                    }
+                }
+                    catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                try
+                {
+                    filereader.close();
+                    inputstream.close();
+
+
+                    if(selectedit==256)
+                    {
+                        System.exit(0);
+                    }
+                    else
+                    {
+                        edit(selectedit);
+                    }
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                break;
             }
             default:
             {
