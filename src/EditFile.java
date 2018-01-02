@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+//todo me eddit project delete extends and
 public class EditFile extends OpenFile
 {
 
@@ -260,7 +260,7 @@ public class EditFile extends OpenFile
                 {
                     while ((line = filereader.readLine()) != null)
                     {
-                        //line = " Last Christmas \n I gave you my heart  ";
+
                         String stringtab[]=WordFromLine(line, 'a', "terk");
 
                         for(int i=0;i<NumberWordsInLine(line);i++)

@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.Scanner;
-
+//todo me change this class to like  liblary
 public class OpenFile {
     protected String path = "C:\\Users\\Hubert\\Desktop\\test1.txt";
     protected String path2 = "C:\\Users\\Hubert\\Desktop\\test2.txt";
@@ -162,7 +162,6 @@ public class OpenFile {
         for(int i =0 ;i<=line.length()-1;i++)
         {
             tmp = line.charAt(i);
-            System.out.println(tmp);
             if(tmp == ' ' || tmp == '\n' )
             {
                 if(line.charAt(i-1)==oldchar && i>0)
@@ -188,10 +187,8 @@ public class OpenFile {
             else
             {
                 tmpStringbuilder.append(tmp);
-                String stest;
-                stest=tmpStringbuilder.toString();
+                tmpStringbuilder.toString();
 
-                System.out.println(stest);
             }
         }
         return wordtab;
