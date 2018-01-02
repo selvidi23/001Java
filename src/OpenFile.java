@@ -1,45 +1,22 @@
 import java.io.*;
 import java.util.Scanner;
-//todo me change this class to like  liblary
+
 public class OpenFile {
-    protected String path = "C:\\Users\\Hubert\\Desktop\\test1.txt";
-    protected String path2 = "C:\\Users\\Hubert\\Desktop\\test2.txt";
+
 
 //---------------------------------------------------------------------------
-    public void readpath()
+    public String readpath()
     {
         String path;
         System.out.println("Podaj sciezke do pliku odzczytu");
         Scanner scannerpath = new Scanner(System.in);
         path = scannerpath.nextLine();
-        this.path = path;
-
-    }
-
-//---------------------------------------------------------------------------
-    public void writepath()
-    {
-        String path;
-        System.out.println("Podaj sciezke plik do zapisu");
-        Scanner scannerpath = new Scanner(System.in);
-        path = scannerpath.nextLine();
-        this.path2 = path;
-
+        return path;
     }
 
 //---------------------------------------------------------------------------
 
-    public int choose(){
-        int chooseselect = 0;
-        System.out.println("podaj rodzaj edycji");
-        Scanner scanint = new Scanner(System.in);
-        chooseselect = scanint.nextInt();
-        return chooseselect;
-    }
-
-//---------------------------------------------------------------------------
-
-    public void openfileandread()
+    public void openfileandread(String path)
     {
         try
         {
@@ -124,7 +101,7 @@ public class OpenFile {
 
 //---------------------------------------------------------------------------
 
-    public int NumberLine() {
+    public int NumberLine(String path) {
         BufferedReader filereader = null;
         String line;
         int Nv=0;

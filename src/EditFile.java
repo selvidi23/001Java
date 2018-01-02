@@ -2,16 +2,27 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-//todo me eddit project delete extends and
-public class EditFile extends OpenFile
+
+public class EditFile
 {
 
+    private String readpath ="C:\\Users\\Hubert\\Desktop\\test1.txt";
+    private String writepath = "C:\\Users\\Hubert\\Desktop\\test2.txt";
+
+    public int choose(){
+        int chooseselect = 0;
+        System.out.println("podaj rodzaj edycji");
+        Scanner scanint = new Scanner(System.in);
+        chooseselect = scanint.nextInt();
+        return chooseselect;
+    }
 
 //---------------------------------------------------------------------------
 
     public void edit(int selectedit)
     {
 
+        OpenFile tmpOpeFileC = new OpenFile();
         if(selectedit!=0 || selectedit!=1 || selectedit!=2 || selectedit!=3 || selectedit!=4 || selectedit!=256)
         {
             selectedit = choose();
@@ -26,7 +37,7 @@ public class EditFile extends OpenFile
 
         try
         {
-            inputstream = new FileWriter(path2);
+            inputstream = new FileWriter(writepath);
         }
             catch (IOException e) {
             e.printStackTrace();
@@ -37,7 +48,7 @@ public class EditFile extends OpenFile
 
         try
         {
-            filereader = new BufferedReader(new FileReader(path));
+            filereader = new BufferedReader(new FileReader(readpath));
         }
             catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -59,7 +70,7 @@ public class EditFile extends OpenFile
                         i++;
 
                         if (i % 2 == 0) {
-                            inputstream.write(SwapToAnagram(line));
+                            inputstream.write(tmpOpeFileC.SwapToAnagram(line));
                             inputstream.write("\n");
                         } else {
                             inputstream.write(line);
@@ -101,17 +112,18 @@ public class EditFile extends OpenFile
                 String line = null;
                 char oldchar = 'a';
                 char newchar = '@';
+                Scanner scann = new Scanner(System.in);
 
-               /* System.out.println("podaj stary znak");                   dokończyc wczytwyanie char
-                Scanner scannerpath = new Scanner(System.in);
-                oldchar = scannerpath.;
-                */
 
                 try {
+                    System.out.println("Podaj stary znak");
+                    oldchar = scann.next(".").charAt(0);
+                    System.out.println("Podaj nowy znak");
+                    newchar = scann.next(".").charAt(0);
                     while ((line = filereader.readLine()) != null)
                     {
                         String tmpline = null;
-                        tmpline = SwapCharOnString(line, oldchar, newchar);
+                        tmpline = tmpOpeFileC.SwapCharOnString(line, oldchar, newchar);
                         inputstream.write(tmpline);
                         inputstream.write("\n");
                     }
@@ -155,7 +167,7 @@ public class EditFile extends OpenFile
                         if (!line.isEmpty()) {
                             NumberVerse++;
                             System.out.println("liczba znakow w lini " + NumberVerse + " " + line.length());
-                            System.out.println("liczba słow w lini " + NumberVerse + " " + NumberWordsInLine(line));
+                            System.out.println("liczba słow w lini " + NumberVerse + " " + tmpOpeFileC.NumberWordsInLine(line));
                         }
                     }
                     System.out.println("liczba wers " + NumberVerse);
@@ -261,9 +273,9 @@ public class EditFile extends OpenFile
                     while ((line = filereader.readLine()) != null)
                     {
 
-                        String stringtab[]=WordFromLine(line, 'a', "terk");
+                        String stringtab[]= tmpOpeFileC.WordFromLine(line, 'a', "terk");
 
-                        for(int i=0;i<NumberWordsInLine(line);i++)
+                        for(int i=0;i<tmpOpeFileC.NumberWordsInLine(line);i++)
                         {
                             inputstream.write(stringtab[i]);
 
