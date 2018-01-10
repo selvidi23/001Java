@@ -8,7 +8,6 @@ public class OpenFile {
     public String readpath()
     {
         String path;
-        System.out.println("Podaj sciezke do pliku odzczytu");
         Scanner scannerpath = new Scanner(System.in);
         path = scannerpath.nextLine();
         return path;

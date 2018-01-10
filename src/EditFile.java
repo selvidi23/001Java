@@ -37,10 +37,14 @@ public class EditFile
 
         try
         {
-            inputstream = new FileWriter(writepath);
+            System.out.println("podaj sciezke odczytu");
+            readpath= tmpOpeFileC.readpath();
+            filereader = new BufferedReader(new FileReader(readpath));
         }
-            catch (IOException e) {
+        catch (FileNotFoundException e) {
+            System.out.println("nie istnieje taki plik");
             e.printStackTrace();
+            edit(selectedit);
         }
 
 
@@ -48,9 +52,11 @@ public class EditFile
 
         try
         {
-            filereader = new BufferedReader(new FileReader(readpath));
+            System.out.println("podaj sciezke zapisu");
+            writepath = tmpOpeFileC.readpath();
+            inputstream = new FileWriter(writepath);
         }
-            catch (FileNotFoundException e) {
+        catch (IOException e) {
             e.printStackTrace();
         }
 
